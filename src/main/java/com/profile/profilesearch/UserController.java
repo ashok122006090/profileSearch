@@ -43,4 +43,10 @@ public class UserController {
     public ResponseEntity<User> addUser(@RequestBody User user) {
         return ResponseEntity.ok(userService.saveUser(user));
     }
+    @GetMapping("/load-external")
+    public ResponseEntity<String> loadDummyUsers() {
+        userService.fetchAndSaveUsersFromDummyApi();
+        return ResponseEntity.ok("Users fetched from dummyjson.com and saved.");
+    }
+
 }
